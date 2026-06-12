@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewExtraLightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewLight.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewLightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewBoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewBlack.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Peugeot New";
+  src: url("./assets/fonts/peugeot-new/PeugeotNewBlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+  font-family: "Peugeot New", sans-serif;
+  margin: 0;
+  height: 100%;
+}
+
+.chat-scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chat-scroll-container::-webkit-scrollbar {
+  display: none;
+}

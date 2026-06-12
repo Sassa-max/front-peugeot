@@ -1,0 +1,41 @@
+{
+  "name": "ermes_llm_fe",
+  "version": "1.4.27",
+  "private": true,
+  "description": "Webapp React de chatbot ShopperGPT Peugeot",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "react",
+    "chatbot",
+    "shoppergpt"
+  ],
+  "author": "rashaan.desnoyers@redpill.paris",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/material": "^5.13.7",
+    "axios": "^1.6.8",
+    "eventsource-parser": "^1.1.2",
+    "framer-motion": "^6.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "shoppergpt-layout": "^0.1.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.108",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/uuid": "^9.0.8",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.5.5"
+  }
+}
