@@ -275,7 +275,7 @@ export const ChatUI = ({
   const helpCues = [
     "Génère 3 concepts créatifs pour le lancement de la Peugeot 408 auprès des CSP+.",
     "Quelles sont les dernières tendances marketing dans le secteur automobile en 2026 \u00A0?",
-    "Comment un conducteur urbain de 35 ans réagirait-il à une campagne axée sur le design de la 308\u00A0?",
+    "Qui sont les personas avec qui je peux discuter de la marque Peugeot \u00A0?",
     "Analyse le positionnement de Peugeot face à Renault et Volkswagen sur le segment électrique en 2026.\u00A0?",
   ];
 
