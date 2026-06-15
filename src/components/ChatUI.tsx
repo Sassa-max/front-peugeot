@@ -273,10 +273,10 @@ export const ChatUI = ({
   const needsComponent = !!componentType;
 
   const helpCues = [
-    "Puis-je faire une location sur un véhicule d’occasion\u00A0?",
-    "Je recherche une voiture électrique, pouvez-vous m'aider\u00A0?",
-    "Quelles sont les garanties que vous proposez pour une voiture d'occasion\u00A0?",
-    "Pouvez-vous me proposer des SUV proches de chez moi\u00A0?",
+    "Génère 3 concepts créatifs pour le lancement de la Peugeot 408 auprès des CSP+.",
+    "Quelles sont les dernières tendances marketing dans le secteur automobile en 2026 \u00A0?",
+    "Comment un conducteur urbain de 35 ans réagirait-il à une campagne axée sur le design de la 308\u00A0?",
+    "Analyse le positionnement de Peugeot face à Renault et Volkswagen sur le segment électrique en 2026.\u00A0?",
   ];
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
