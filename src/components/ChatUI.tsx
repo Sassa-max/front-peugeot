@@ -871,9 +871,9 @@ export const ChatUI = ({
             </motion.div>
           );
         })}
-        {introText && finalMessages.length > 0 && finalMessages[finalMessages.length - 1]?.name === "Vous" && (
+        {(introText || (loading && isThinking)) && (
           <motion.div
-            key="intro-event"
+            key="assistant-progress"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -913,65 +913,24 @@ export const ChatUI = ({
                 maxWidth: isOnMobile ? "100%" : "450px",
               }}
             >
-              <div
-                style={{
-                  fontSize: "0.6875rem",
-                  lineHeight: 1.45,
-                  color: "rgba(255,255,255,0.72)",
-                  fontStyle: "italic",
-                  marginBottom: "0.2rem",
-                }}
-              >
-                {introText}
-              </div>
-            </Box>
-          </motion.div>
-        )}
-        {loading && isThinking && (
-          <motion.div
-            key="thinking-steps"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: isOnMobile ? "8px 16px" : "12px 24px",
-              alignItems: "flex-start",
-            }}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "7px",
-                mb: 0.5,
-              }}
-            >
-              <Icon
-                icon="assistantLAIon"
-                attrs={{ width: "25px", height: "30px" }}
-              />
-              <TypoComponent
-                variant="caption"
-                sx={{
-                  height: 28,
-                  color: "#fff",
-                  fontSize: 14,
-                }}
-              >
-                Assistant LAION
-              </TypoComponent>
-            </Box>
-            <Box
-              sx={{
-                pl: isOnMobile ? "0" : "35px",
-                maxWidth: isOnMobile ? "100%" : "450px",
-                overflowY: "auto",
-                maxHeight: "100px",
-              }}
-            >
-              {parseOrchestrationProgress(orchestrationProgress, "thinking")}
+              {introText && (
+                <TypoComponent
+                  component="div"
+                  sx={{
+                    color: "#fff",
+                    fontSize: "14px",
+                    lineHeight: 1.5,
+                    mb: isThinking ? 1 : 0,
+                  }}
+                >
+                  {introText}
+                </TypoComponent>
+              )}
+              {loading && isThinking && (
+                <Box sx={{ overflowY: "auto", maxHeight: "100px" }}>
+                  {parseOrchestrationProgress(orchestrationProgress, "thinking")}
+                </Box>
+              )}
             </Box>
           </motion.div>
         )}
