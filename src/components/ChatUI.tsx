@@ -481,6 +481,11 @@ export const ChatUI = ({
     ...(typingMessageRef.current ? [typingMessageRef.current] : []),
   ];
 
+  const lastUserMsgIndex = finalMessages.reduce(
+    (last, msg, i) => (msg.name === "Vous" ? i : last),
+    -1,
+  );
+
   const lastMsgId = finalMessages[finalMessages.length - 1]?.id;
   const lastMessageHeight = lastMsgId ? messageHeights[lastMsgId] : undefined;
 
@@ -716,8 +721,8 @@ export const ChatUI = ({
           const isLastMessage = index === finalMessages.length - 1;
 
           return (
+            <React.Fragment key={msg.id}>
             <motion.div
-              key={msg.id}
               ref={(el) => {
                 if (el) {
                   messageRefs.current[msg.id] = el;
@@ -869,71 +874,73 @@ export const ChatUI = ({
                 </Box>
               )}
             </motion.div>
-          );
-        })}
-        {(introText || (loading && isThinking)) && (
-          <motion.div
-            key="assistant-progress"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: isOnMobile ? "8px 16px" : "12px 24px",
-              alignItems: "flex-start",
-            }}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "7px",
-                mb: 0.5,
-              }}
-            >
-              <Icon
-                icon="assistantLAIon"
-                attrs={{ width: "25px", height: "30px" }}
-              />
-              <TypoComponent
-                variant="caption"
-                sx={{
-                  height: 28,
-                  color: "#fff",
-                  fontSize: 14,
+            {index === lastUserMsgIndex && (introText || (loading && isThinking)) && (
+              <motion.div
+                key="assistant-progress"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: isOnMobile ? "8px 16px" : "12px 24px",
+                  alignItems: "flex-start",
                 }}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                Assistant LAION
-              </TypoComponent>
-            </Box>
-            <Box
-              sx={{
-                pl: isOnMobile ? "0" : "35px",
-                maxWidth: isOnMobile ? "100%" : "450px",
-              }}
-            >
-              {introText && (
-                <TypoComponent
-                  component="div"
+                <Box
                   sx={{
-                    color: "#fff",
-                    fontSize: "14px",
-                    lineHeight: 1.5,
-                    mb: isThinking ? 1 : 0,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "7px",
+                    mb: 0.5,
                   }}
                 >
-                  {introText}
-                </TypoComponent>
-              )}
-              {loading && isThinking && (
-                <Box sx={{ overflowY: "auto", maxHeight: "100px" }}>
-                  {parseOrchestrationProgress(orchestrationProgress, "thinking")}
+                  <Icon
+                    icon="assistantLAIon"
+                    attrs={{ width: "25px", height: "30px" }}
+                  />
+                  <TypoComponent
+                    variant="caption"
+                    sx={{
+                      height: 28,
+                      color: "#fff",
+                      fontSize: 14,
+                    }}
+                  >
+                    Assistant LAION
+                  </TypoComponent>
                 </Box>
-              )}
-            </Box>
-          </motion.div>
-        )}
+                <Box
+                  sx={{
+                    pl: isOnMobile ? "0" : "35px",
+                    maxWidth: isOnMobile ? "100%" : "450px",
+                  }}
+                >
+                  {introText && (
+                    <TypoComponent
+                      component="div"
+                      sx={{
+                        color: "#fff",
+                        fontSize: "14px",
+                        lineHeight: 1.5,
+                        mb: isThinking ? 1 : 0,
+                      }}
+                    >
+                      {introText}
+                    </TypoComponent>
+                  )}
+                  {loading && isThinking && (
+                    <Box sx={{ overflowY: "auto", maxHeight: "100px" }}>
+                      {parseOrchestrationProgress(orchestrationProgress, "thinking")}
+                    </Box>
+                  )}
+                </Box>
+              </motion.div>
+            )}
+            </React.Fragment>
+          );
+        })}
+
         {loading && !isThinking && !typingMessageRef.current && (
           <motion.div
             key="loading-bubble"
