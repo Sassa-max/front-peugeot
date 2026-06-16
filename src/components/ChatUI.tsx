@@ -275,10 +275,17 @@ export const ChatUI = ({
   const needsComponent = !!componentType;
 
   const helpCues = [
+<<<<<<< HEAD
     "Génère 3 concepts créatifs pour le lancement de la Peugeot 408 auprès des CSP+\u00A0",
     "Quelles sont les dernières tendances marketing dans le secteur automobile en 2026\u00A0?",
     "Qui sont les personas avec qui je peux discuter de la marque Peugeot\u00A0?",
     "Analyse le positionnement de Peugeot face à Renault et Volkswagen sur le segment électrique en 2026\u00A0?",
+=======
+    "Génère 3 concepts créatifs pour le lancement de la Peugeot 408 auprès des CSP+.",
+    "Quelles sont les dernières tendances marketing dans le secteur automobile en 2026 \u00A0?",
+    "Qui sont les personas avec qui je peux discuter de la marque Peugeot \u00A0?",
+    "Analyse le positionnement de Peugeot face à Renault et Volkswagen sur le segment électrique en 2026.\u00A0?",
+>>>>>>> 80be60de6c41c5643c229a668b1ad74e0485c2ee
   ];
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
