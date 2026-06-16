@@ -208,6 +208,7 @@ export const ChatUI = ({
   question: externalQuestion,
   setQuestion: externalSetQuestion,
   loading: externalLoading = false,
+  introText: externalIntroText = "",
   orchestrationProgress: externalOrchestrationProgress = "",
   componentType: externalComponentType = "",
   externalComponents,
@@ -245,6 +246,7 @@ export const ChatUI = ({
   const loading = usesGradio
     ? internalLoading
     : (session?.loading ?? externalLoading);
+  const introText = session?.introText ?? externalIntroText;
   const orchestrationProgress =
     session?.orchestrationProgress ?? externalOrchestrationProgress;
   const sendForm = session?.successForm ?? externalSendForm;
@@ -273,10 +275,10 @@ export const ChatUI = ({
   const needsComponent = !!componentType;
 
   const helpCues = [
-    "Puis-je faire une location sur un véhicule d’occasion\u00A0?",
-    "Je recherche une voiture électrique, pouvez-vous m'aider\u00A0?",
-    "Quelles sont les garanties que vous proposez pour une voiture d'occasion\u00A0?",
-    "Pouvez-vous me proposer des SUV proches de chez moi\u00A0?",
+    "Génère 3 concepts créatifs pour le lancement de la Peugeot 408 auprès des CSP+\u00A0",
+    "Quelles sont les dernières tendances marketing dans le secteur automobile en 2026\u00A0?",
+    "Qui sont les personas avec qui je peux discuter de la marque Peugeot\u00A0?",
+    "Analyse le positionnement de Peugeot face à Renault et Volkswagen sur le segment électrique en 2026\u00A0?",
   ];
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -937,6 +939,40 @@ export const ChatUI = ({
           </motion.div>
         )}
       </Box>
+      {introText && (
+        <Box
+          sx={{
+            px: isOnMobile ? "16px" : "24px",
+            py: "8px",
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+            flexShrink: 0,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "7px",
+            }}
+          >
+            <Icon
+              icon="assistantLAIon"
+              attrs={{ width: "25px", height: "30px" }}
+            />
+            <TypoComponent
+              component="div"
+              sx={{
+                color: "rgba(255,255,255,0.75)",
+                fontSize: "13px",
+                lineHeight: 1.5,
+                fontStyle: "italic",
+              }}
+            >
+              {introText}
+            </TypoComponent>
+          </Box>
+        </Box>
+      )}
       {messages.length < 2 && isOnMobile && (
         <Box
           sx={{

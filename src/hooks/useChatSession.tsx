@@ -29,6 +29,7 @@ export type ChatSessionContextValue = {
   question: string;
   setQuestion: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
+  introText: string;
   orchestrationProgress: string;
   successForm: boolean | null;
   setSuccessForm: React.Dispatch<React.SetStateAction<boolean | null>>;

@@ -103,6 +103,7 @@ export const ShopperChat = ({
   const {
     loading,
     error: orchestrationError,
+    introText,
     orchestrationProgress,
     orchestrationResult,
   } = useOrchestratorAnswer({
@@ -335,6 +336,7 @@ export const ShopperChat = ({
       question,
       setQuestion,
       loading,
+      introText,
       orchestrationProgress,
       successForm,
       setSuccessForm,
@@ -368,6 +370,7 @@ export const ShopperChat = ({
       answer,
       question,
       loading,
+      introText,
       orchestrationProgress,
       successForm,
       messages,

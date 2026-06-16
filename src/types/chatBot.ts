@@ -17,6 +17,7 @@ export interface ChatUIProps {
   question?: string;
   setQuestion?: React.Dispatch<React.SetStateAction<string>>;
   loading?: boolean;
+  introText?: string;
   orchestrationProgress?: string;
   componentType?: string;
   externalComponents?: any;

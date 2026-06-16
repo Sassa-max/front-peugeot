@@ -16,6 +16,7 @@ type UseOrchestratorAnswerParams = {
 type UseOrchestratorAnswerResult = {
   loading: boolean;
   error: string | null;
+  introText: string;
   orchestrationProgress: string;
   orchestrationResult: OrchestrationResult | null;
 };
@@ -35,6 +36,7 @@ export function useOrchestratorAnswer({
 }: UseOrchestratorAnswerParams): UseOrchestratorAnswerResult {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [introText, setIntroText] = useState("");
   const [orchestrationProgress, setOrchestrationProgress] = useState("");
   const [orchestrationResult, setOrchestrationResult] =
     useState<OrchestrationResult | null>(null);
@@ -48,6 +50,7 @@ export function useOrchestratorAnswer({
 
     setAnswer("");
     setError(null);
+    setIntroText("");
     setOrchestrationProgress("");
     setOrchestrationResult(null);
     setLoading(true);
@@ -88,6 +91,11 @@ export function useOrchestratorAnswer({
 
           const eventType = event.event || "message";
           const data = decodeSseData(event.data);
+
+          if (eventType === "intro") {
+            setIntroText((prev) => prev + data);
+            return;
+          }
 
           if (eventType === "progress") {
             setOrchestrationProgress(data);
@@ -151,6 +159,7 @@ export function useOrchestratorAnswer({
   return {
     loading,
     error,
+    introText,
     orchestrationProgress,
     orchestrationResult,
   };
