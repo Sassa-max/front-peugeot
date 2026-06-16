@@ -871,7 +871,7 @@ export const ChatUI = ({
             </motion.div>
           );
         })}
-        {(introText || (loading && isThinking)) && (
+        {loading && (introText || isThinking) && (
           <motion.div
             key="assistant-progress"
             style={{
