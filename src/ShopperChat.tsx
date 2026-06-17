@@ -112,6 +112,7 @@ export const ShopperChat = ({
     apiUrl: resolvedApiUrl,
     setJwt,
     jwt,
+    sessionId,
     successForm,
     setSuccessForm,
   });

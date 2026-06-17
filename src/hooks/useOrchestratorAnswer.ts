@@ -8,6 +8,7 @@ type UseOrchestratorAnswerParams = {
   question: string | null;
   apiUrl: string;
   jwt: string;
+  sessionId: string;
   setJwt: React.Dispatch<React.SetStateAction<string>>;
   successForm: boolean | null;
   setSuccessForm: React.Dispatch<React.SetStateAction<boolean | null>>;
@@ -31,6 +32,7 @@ export function useOrchestratorAnswer({
   apiUrl,
   setJwt,
   jwt,
+  sessionId,
   successForm,
   setSuccessForm,
 }: UseOrchestratorAnswerParams): UseOrchestratorAnswerResult {
@@ -63,11 +65,11 @@ export function useOrchestratorAnswer({
           headers: {
             "Content-Type": "application/json",
             "x-client-id": "shoppergpt",
-            Authorization: `Bearer ${jwt}`,
+            Authorization: `Bearer ${jwt || sessionId}`,
           },
           body: JSON.stringify({
             query: question,
-            client_id: "shoppergpt",
+            client_id: sessionId,
             form_success: successForm,
           }),
         });
@@ -154,7 +156,7 @@ export function useOrchestratorAnswer({
     return () => {
       cancelled = true;
     };
-  }, [question, setAnswer, successForm, apiUrl, jwt, setJwt, setSuccessForm]);
+  }, [question, setAnswer, successForm, apiUrl, jwt, sessionId, setJwt, setSuccessForm]);
 
   return {
     loading,
